@@ -6,29 +6,19 @@
 // -----------------------------------------------------------------
 
 #include "rsu.plug.h"  // Plug SDK
-#include "multi.h"
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
 static PlugInterfaceQueryFunc Plug_InterfaceQuery = NULL;
 static IPlugCommon* lpCommon = NULL;
-static const unsigned long luMultiInterfaceId = 0x00000001;
 static unsigned char PatchStep = 0;
 
-// Does not require a reference count
-static void __stdcall Plugin_P_Acquire(void* lpSelf)
+enum
 {
-	return;
-
-	lpSelf;	// Unused
-}
-
-static void __stdcall Plugin_P_Release(void* lpSelf)
-{
-	return;
-
-	lpSelf;	// Unused
-}
+	PATCH_KRO = 0,
+	PATCH_RE,
+	PATCH_CUSTOM,
+};
 
 // Set Patch Info for each patch step / GRF.
 static bool __stdcall Set_Patch_Info(void* lpContext)
@@ -112,11 +102,6 @@ static bool __stdcall Set_Patch_Info(void* lpContext)
 	// All GREEN!
 	return true;
 }
-static const IPlugMulti1 TblMulti1 =
-{
-	Plugin_P_Acquire,
-	Plugin_P_Release,
-};
 
 static bool __stdcall Plugin_OnEvent(unsigned long luEvent, unsigned long luData, void* lpData)
 {
@@ -199,14 +184,7 @@ bool __stdcall Plugin_Init(PlugInterfaceQueryFunc lpInterfaceQuery, PlugInterfac
 	// pass notification function
 	*lppOnEvent = &Plugin_OnEvent;
 
-	// Register our own interface
-	if(Plug_InterfaceQuery(RSU_PLUG_VERSION1, RSU_PLUG_TYPE_COMMON, NULL, (void**)&lpCommon))
-	{
-		if(!lpCommon->InterfaceRegister(&luMultiInterfaceId, 1, NULL, (void*)&TblMulti1))
-		{
-			;
-		}
-	}
+	Plug_InterfaceQuery(RSU_PLUG_VERSION1, RSU_PLUG_TYPE_COMMON, NULL, (void**)&lpCommon);
 
 	return true;
 
