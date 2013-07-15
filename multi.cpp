@@ -184,7 +184,10 @@ bool __stdcall Plugin_Init(PlugInterfaceQueryFunc lpInterfaceQuery, PlugInterfac
 	// pass notification function
 	*lppOnEvent = &Plugin_OnEvent;
 
-	Plug_InterfaceQuery(RSU_PLUG_VERSION1, RSU_PLUG_TYPE_COMMON, NULL, (void**)&lpCommon);
+	if(!Plug_InterfaceQuery(RSU_PLUG_VERSION1, RSU_PLUG_TYPE_COMMON, NULL, (void**)&lpCommon))
+	{
+		return false;
+	}
 
 	return true;
 
