@@ -37,8 +37,8 @@ static bool __stdcall Set_Patch_Info(void* lpContext)
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPUSER, "Anonymous");
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPASS, "");
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPATH, "/Patch");
-			lpCommon->SetPatchInfo(RSU_IPATCH_WEBPORT, "80");
-			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPORT, "20021");
+			lpCommon->SetPatchInfoNum(RSU_IPATCH_WEBPORT, 80);
+			lpCommon->SetPatchInfoNum(RSU_IPATCH_FTPPORT, 20021);
 			break;
 		// Set kRO:RE Patch Settings
 		case PATCH_RE:
@@ -52,8 +52,8 @@ static bool __stdcall Set_Patch_Info(void* lpContext)
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPUSER, "Anonymous");
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPASS, "");
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPATH, "/Patch");
-			lpCommon->SetPatchInfo(RSU_IPATCH_WEBPORT, "80");
-			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPORT, "20021");
+			lpCommon->SetPatchInfoNum(RSU_IPATCH_WEBPORT, 80);
+			lpCommon->SetPatchInfoNum(RSU_IPATCH_FTPPORT, 20021);
 			break;
 		// Set Private Server Patch Settings
 		case PATCH_CUSTOM:
@@ -67,7 +67,7 @@ static bool __stdcall Set_Patch_Info(void* lpContext)
 			lpCommon->SetPatchInfo(RSU_IPATCH_WEBSITE, "");
 
 			// Port the HTTP Website is on, usually is 80.
-			lpCommon->SetPatchInfo(RSU_IPATCH_WEBPORT, "80");
+			lpCommon->SetPatchInfoNum(RSU_IPATCH_WEBPORT, 80);
 
 			// Directory the patch list / allow is located. Set to blank if in home. (ex: /patch)
 			lpCommon->SetPatchInfo(RSU_IPATCH_WEBPATH, "");
@@ -82,7 +82,7 @@ static bool __stdcall Set_Patch_Info(void* lpContext)
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPSITE, "");
 
 			// Port the FTP server is on, usually is 21.
-			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPORT, "21");
+			lpCommon->SetPatchInfoNum(RSU_IPATCH_FTPPORT, 21);
 
 			// Directory where the patches are stored on the FTP. leave blank if in home. (ex: /patch)
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPATH, "");
