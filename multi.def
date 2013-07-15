@@ -1,0 +1,4 @@
+EXPORTS
+    Plugin_Load PRIVATE
+    Plugin_Init PRIVATE
+    Plugin_Quit PRIVATE
