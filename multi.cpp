@@ -32,7 +32,7 @@ static bool __stdcall Set_Patch_Info(void* lpContext)
 			lpCommon->SetPatchInfo(RSU_IPATCH_WEBSITE, "webpatch.ragnarok.co.kr");
 			lpCommon->SetPatchInfo(RSU_IPATCH_WEBPATH, "/patch");
 			lpCommon->SetPatchInfo(RSU_IPATCH_WEBDENY, "patch_allow.txt");
-			lpCommon->SetPatchInfo(RSU_IPATCH_WEBLIST, "patch8.txt");
+			lpCommon->SetPatchInfo(RSU_IPATCH_WEBLIST, "patch.txt");
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPSITE, "ragnarok.nowcdn.co.kr");
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPUSER, "Anonymous");
 			lpCommon->SetPatchInfo(RSU_IPATCH_FTPPASS, "");
